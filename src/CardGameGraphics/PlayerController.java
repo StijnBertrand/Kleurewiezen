@@ -43,7 +43,7 @@ public class PlayerController extends PlayerViewer implements MouseMotionListene
 				drawCard(xDrag,yDrag,drag,false);
 			}
 		}else{
-			super.drawHand(x, y, space, hand,horizontal);
+			super.drawHand(x, y, space, player,horizontal);
 		}	
 	}
 	
@@ -66,13 +66,22 @@ public class PlayerController extends PlayerViewer implements MouseMotionListene
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		Point p = e.getPoint();
-		int card = onCard(p.x, p.y);
-		if(card != -1){
-			if(((HumanPlayer)player).getMyTurn()){
-				((HumanPlayer)player).playCard(card);
+		if (e.getClickCount() == 2) {
+			Point p = e.getPoint();
+			int card = onCard(p.x, p.y);
+			if(card != -1){
+				if(((HumanPlayer)player).getMyTurn()){
+					((HumanPlayer)player).playCard(card);
+				}
+			}
+		}else if(e.getClickCount() == 1){
+			Point p = e.getPoint();
+			int card = onCard(p.x, p.y);
+			if(card != -1){
+				player.selectDeselect(card);
 			}
 		}
+
 	}
 
 	@Override

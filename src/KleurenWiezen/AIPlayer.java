@@ -18,12 +18,13 @@ public class AIPlayer extends Player implements KPlayer{
 	protected boolean canPlay(int card){
 		int starter = table.getCurrSlag().getStarter();
 		if(-1 == starter)return true;
+		/*
 		int colour = table.getCurrSlag().getCard(starter).getColour();
 		if(hasCards(colour)){
 			if( colour != hand.getCard(card).getColour()){
 				return false;
 			}
-		}	
+		}*/
 		return true;
 	}
 
@@ -32,6 +33,7 @@ public class AIPlayer extends Player implements KPlayer{
 		boolean[] b = new boolean[9];
 		for(Card c :hand){
 			if(c.getNumber() == 0)aces++;
+			/*
 			if(c.getColour() == 0){
 				try{
 					b[12-c.getColour()] = true;
@@ -39,6 +41,7 @@ public class AIPlayer extends Player implements KPlayer{
 					continue;
 				}
 			}
+			*/
 		}	
 		if(aces >= 3 ){
 			if(aces == 4){
@@ -65,7 +68,7 @@ public class AIPlayer extends Player implements KPlayer{
 	@Override
 	public boolean hasCard(int color, int number) {
 		for(Card c:hand){
-			if(color== c.getColour()&number == c.getNumber())return true;
+			//if(color== c.getColour()&number == c.getNumber())return true;
 		}		
 		return false;
 	}
@@ -89,19 +92,19 @@ public class AIPlayer extends Player implements KPlayer{
 		spades = 0;
 		for(Card c : hand){
 			switch(c.getColour()){
-			case(0):{
+			case HEARTS:{
 				hearts++;
 				break;
 			}
-			case(1):{
+				case DIMONDS:{
 				diamonds++;
 				break;
 			}
-			case(2):{
+				case CLUBS:{
 				clubs++;
 				break;
 			}
-			case(3):{
+				case SPADES:{
 				spades++;
 				break;
 			}

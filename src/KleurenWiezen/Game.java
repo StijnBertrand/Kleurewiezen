@@ -1,6 +1,7 @@
 package KleurenWiezen;
 
 import CardGame.Card;
+import CardGame.CardColor;
 import CardGame.Player;
 import CardGame.Slag;
 
@@ -10,7 +11,7 @@ public class Game {
 	private KTable table;
 	private int bStarter = 0;
 	private int sStarter = 0;
-	private int troef = 3;
+	private CardColor troef = CardColor.NONE;
 	int[] game;
 	
 	public Game(Player p1, Player p2, Player p3, Player p4 ){
@@ -92,7 +93,7 @@ public class Game {
 	}
 	
 	private void setTroef(){
-		troef = -1;
+		troef = CardColor.NONE;
 		sStarter = bStarter;
 		switch(game[0]){
 		//two or one player go alone
@@ -100,13 +101,13 @@ public class Game {
 		case(5)://diamonds
 		case(4)://clubs
 		case(3):{//spades
-			troef = -(game[0]-7);
+			//troef = -(game[0]-7);
 			break;
 		}
 		case(8)://abundance
 		case(11):{//solo slim
 			if(game[2]!=-1){
-				troef = game[2];
+				//troef = game[2];
 				sStarter = game[game.length-1]; 
 				break;
 			}

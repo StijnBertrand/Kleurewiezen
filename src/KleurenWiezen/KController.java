@@ -55,7 +55,7 @@ public class KController extends PlayerController{
 		int x = (view.getHeight() - ((player.getAmountOfCards((i+1)%4 )-1)*(sf.getSpriteWidth()+space)+sf.getSpriteWidth()))/2;
 		Text.drawText(view,100,x-50,"player"+ (((i+1)%4)+1),25);
 		if(hand != null){
-			drawHand(100,x,space, hand,false);
+			drawHand(100,x,space, player,false);
 		}else{
 			drawCardsBack(100, x, space, player.getAmountOfCards((i+1)%4 ), false);
 		}
@@ -65,7 +65,7 @@ public class KController extends PlayerController{
 		hand = ((KHumanPlayer)player).getHand((i+2)%4);
 		Text.drawText(view,x-100,90-sf.getSpriteHeight(),"player"+ (((i+2)%4)+1),25);
 		if(hand != null){
-			drawHand(x,100-sf.getSpriteHeight(),space, hand,true);
+			drawHand(x,100-sf.getSpriteHeight(),space, player,true);
 		}else{
 			drawCardsBack(x, 100-sf.getSpriteHeight(), space, player.getAmountOfCards((i+2)%4 ), true);
 		}
@@ -75,7 +75,7 @@ public class KController extends PlayerController{
 		Text.drawText(view,view.getWidth()-100-sf.getSpriteHeight(),x-50,"player" + (((i+3)%4)+1),25);
 		int y =(view.getHeight() - ((player.getAmountOfCards((i+3)%4 )-1)*(sf.getSpriteWidth()+space)+sf.getSpriteWidth()))/2;
 		if(hand != null){
-			drawHand(view.getWidth()-100-sf.getSpriteHeight(), y,space, hand,false);
+			drawHand(view.getWidth()-100-sf.getSpriteHeight(), y,space, player,false);
 		}else{
 			drawCardsBack(view.getWidth()-100-sf.getSpriteHeight(), y, space, player.getAmountOfCards((i+3)%4 ), false);
 		}

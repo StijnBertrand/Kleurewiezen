@@ -108,17 +108,19 @@ public class PlayerViewer extends Controller {
 	}
 
 	protected void drawPlayerHand(int x,int y, int space , Hand hand,boolean horizontal){
-		drawHand(x,handHeight,space, player.getHand(),true);
+		drawHand(x,handHeight,space, player,true);
 	}
 	
-	protected void drawHand(int x,int y, int space , Hand hand,boolean horizontal){
+	protected void drawHand(int x,int y, int space , Player player,boolean horizontal){
 		if(horizontal){
-			for(Card c:hand){
-				drawCard(x,y,c,!horizontal);
+			for(int i = 0 ; i<player.getAmountOfCards();i++){
+				//TODO: adjust the 20 to the card hight
+				drawCard(x,y-(player.isSelected(i)?20:0),player.getHand().getCard(i),!horizontal);
 				x += space + sf.getSpriteWidth();
 			}
 		}else{
-			for(Card c:hand){
+			//todo: no support for selecting cards when the hand of the player is drawn vertically
+			for(Card c:player.getHand()){
 				drawCard(x,y,c,!horizontal);
 				y += space + sf.getSpriteWidth();
 			}

@@ -1,17 +1,7 @@
-import java.awt.Button;
-import java.awt.PopupMenu;
-import java.util.ArrayList;
 
-import CardGame.Card;
-import CardGame.HumanPlayer;
-import CardGame.Player;
-import KleurenWiezen.AIPlayer;
-import CardGame.Table;
-import CardGameGraphics.PlayerController;
-import Graphics.Controller;
+import HartenJagen.*;
+
 import Graphics.Screen;
-import KleurenWiezen.Game;
-import KleurenWiezen.KleureWiezenFactory;
 
 
 public class Main {
@@ -21,7 +11,18 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
-		
+
+		HJPlayer player1 = new HJPlayer();
+		HJAIPlayer player2 = new HJAIPlayer();
+		HJAIPlayer player3 = new HJAIPlayer();
+		HJAIPlayer player4 = new HJAIPlayer();
+
+		new Thread(s).start();
+		player1.giveScreen(s);
+
+		HartenJagen hj = new HartenJagen(player1,player2,player3,player4);
+		hj.start();
+/*
 		KleureWiezenFactory Kf = KleureWiezenFactory.getInstance();
 		new Thread(s).start();
 		
@@ -48,9 +49,6 @@ public class Main {
 		Game game = Kf.getGame(p,p1,p2,p3);
 		
 		game.start();
-	} 
-	
-	public void returnToMainMenu(){
-		//new MMController(s);
+*/
 	}
 }

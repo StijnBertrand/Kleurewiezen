@@ -11,6 +11,11 @@ public class Hand implements Iterable<Card>{
 	public void addCard(Card card){
 		hand.add(card);
 	}
+
+	public Card play(Card card){
+		hand.remove(card);
+		return card;
+	}
 	
 	public Card play(int index){
 		return hand.remove(index);
@@ -25,7 +30,7 @@ public class Hand implements Iterable<Card>{
 		return hand.iterator();
 	}
 	
-	public boolean hasCards(int colour){
+	public boolean hasCards(CardColor colour){
 		for(Card c:hand){
 			if(colour == c.getColour())return true;
 		}
@@ -45,7 +50,7 @@ public class Hand implements Iterable<Card>{
 	        @Override
 	        public int compare(Card  c1, Card  c2)
 	        {        	
-	            int i = c1.getColour() - c2.getColour();
+	            int i = c1.getColour().getValue() - c2.getColour().getValue();
 	        	if(i == 0){
 	        		if(c2.getNumber() == 0)return +1;
 	        		if(c1.getNumber() == 0)return -1;

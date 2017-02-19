@@ -3,6 +3,7 @@ package KleurenWiezen;
 import java.util.ArrayList;
 
 import CardGame.Card;
+import CardGame.CardColor;
 import CardGame.Hand;
 import CardGame.HumanPlayer;
 import CardGameGraphics.PlayerController;
@@ -19,12 +20,14 @@ public class KHumanPlayer extends HumanPlayer implements KPlayer{
 		// hier moet nog iets komen voor als het troel is
 		int starter = table.getCurrSlag().getStarter();
 		if(-1 == starter)return true;
-		int colour = table.getCurrSlag().getCard(starter).getColour();	
+		/*
+		int colour = table.getCurrSlag().getCard(starter).getColour();
 		if(hasCards(colour)){
 			if( colour != hand.getCard(card).getColour()){
 				return false;
 			}
-		}	
+		}
+		*/
 		return true;
 	}
 	
@@ -33,9 +36,9 @@ public class KHumanPlayer extends HumanPlayer implements KPlayer{
 		boolean[] b = new boolean[9];
 		for(Card c :hand){
 			if(c.getNumber() == 0)aces++;
-			if(c.getColour() == 0){
+			if(c.getColour() == CardColor.HEARTS){
 				try{
-					b[12-c.getColour()] = true;
+					b[12-c.getColour().getValue()] = true;
 				}catch(Exception e){
 					continue;
 				}
@@ -68,7 +71,7 @@ public class KHumanPlayer extends HumanPlayer implements KPlayer{
 					}
 				}else{
 					for(Card c: hand){
-						if(c.getColour()==0 & c.getNumber() == (13 - number))return 64;
+						if(c.getColour()==CardColor.HEARTS & c.getNumber() == (13 - number))return 64;
 					}			
 					System.out.println("hier3");
 				}
@@ -121,7 +124,7 @@ public class KHumanPlayer extends HumanPlayer implements KPlayer{
 	@Override
 	public boolean hasCard(int color, int number) {
 		for(Card c:hand){
-			if(color== c.getColour()&number == c.getNumber())return true;
+			if(color== c.getColour().getValue()&number == c.getNumber())return true;
 		}		
 		return false;
 	}
