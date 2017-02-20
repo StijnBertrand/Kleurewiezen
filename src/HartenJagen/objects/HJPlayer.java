@@ -5,7 +5,8 @@ import CardGame.state.objects.enums.CardColor;
 import CardGame.state.objects.HumanPlayer;
 import CardGame.state.objects.enums.CardNumber;
 import Graphics.Screen;
-import HartenJagen.HartenJagen;
+import HartenJagen.*;
+import HartenJagen.graphics.HJController;
 
 /**
  * Created by stijn on 2/18/17.
@@ -85,6 +86,6 @@ public class HJPlayer extends HumanPlayer implements HJPlayerInterface {
 
     @Override
     public void giveScreen(Screen s){
-        new HartenJagen.HJController(s, this);
+        new HJController(s, this);
     }
 }
