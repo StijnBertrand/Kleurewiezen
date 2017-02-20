@@ -5,9 +5,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import CardGame.Card;
-import CardGame.Hand;
-import CardGame.HumanPlayer;
+import CardGame.state.objects.Card;
+import CardGame.state.objects.Hand;
+import CardGame.state.objects.HumanPlayer;
 import Graphics.Screen;
 
 public class PlayerController extends PlayerViewer implements MouseMotionListener,MouseListener{

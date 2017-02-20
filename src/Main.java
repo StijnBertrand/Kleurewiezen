@@ -2,6 +2,8 @@
 import HartenJagen.*;
 
 import Graphics.Screen;
+import HartenJagen.objects.HJAIPlayer;
+import HartenJagen.objects.HJPlayer;
 
 
 public class Main {

@@ -1,17 +1,9 @@
 package CardGameGraphics;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-
-import CardGame.Card;
-import CardGame.Hand;
-import CardGame.Player;
-import CardGame.Slag;
+import CardGame.state.objects.Card;
+import CardGame.state.objects.Hand;
+import CardGame.state.objects.Player;
+import CardGame.state.objects.Slag;
 import Graphics.Controller;
 import Graphics.Screen;
 import Graphics.Text;
