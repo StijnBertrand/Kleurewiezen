@@ -7,7 +7,7 @@ import CardGame.state.objects.enums.CardColor;
 /**
  * Created by stijn on 4/16/17.
  */
-public class TroefTable extends Table {
+public class TroefTable extends SlagTable {
 
 
     //in some games there is a troef, can be ignored if this stays CardColor.NONE

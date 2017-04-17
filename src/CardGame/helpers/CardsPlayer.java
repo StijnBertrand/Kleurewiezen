@@ -4,13 +4,14 @@ import CardGame.helpers.slagwinnerdeciders.SlagWinnerDecider;
 import CardGame.state.objects.Card;
 import CardGame.state.objects.Slag;
 import CardGame.state.objects.enums.CardNumber;
+import CardGame.state.objects.tables.SlagTable;
 import CardGame.state.objects.tables.Table;
 import CardGame.state.objects.tables.TroefTable;
 
 /**
  * Created by stijn on 4/16/17.
  */
-public class CardsPlayer<T extends Table> {
+public class CardsPlayer<T extends SlagTable> {
 
 
 

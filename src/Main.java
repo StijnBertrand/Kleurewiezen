@@ -2,6 +2,7 @@
 import HartenJagen.*;
 
 import Graphics.Screen;
+import HartenJagen.graphics.HJController;
 import HartenJagen.objects.HJAIPlayer;
 import HartenJagen.objects.HJPlayer;
 
@@ -20,7 +21,8 @@ public class Main {
 		HJAIPlayer player4 = new HJAIPlayer();
 
 		new Thread(s).start();
-		player1.giveScreen(s);
+		//the link between the screen the player and the controller
+		new HJController(s, player1);
 
 		HartenJagen hj = new HartenJagen(player1,player2,player3,player4);
 		hj.start();

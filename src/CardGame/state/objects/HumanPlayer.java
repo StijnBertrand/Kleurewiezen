@@ -31,11 +31,6 @@ public class HumanPlayer extends Player {
 		}
 		return hand.play(cardToPlay);
 	}
-
-	@Deprecated
-	public void giveScreen(Screen s){
-		new PlayerController(s, this);
-	}
 	
 	public synchronized boolean getMyTurn(){
 		return myTurn;

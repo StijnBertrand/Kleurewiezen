@@ -2,6 +2,7 @@ package CardGame.state.objects;
 
 import CardGame.state.objects.enums.CardColor;
 import CardGame.state.objects.enums.CardNumber;
+import CardGame.state.objects.tables.SlagTable;
 import CardGame.state.objects.tables.Table;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public abstract class Player {
 
 	//the table this player sits on
-	protected Table table;
+	protected SlagTable table;
 	//this is the position the player has at the table
 	protected int seat = -1;
 	//the player his cards
@@ -19,7 +20,7 @@ public abstract class Player {
 	private ArrayList<Card> selected = new ArrayList();
 
 	// Table Logic
-	public void setTable(Table t, int seat){
+	public void setTable(SlagTable t, int seat){
 		table = t;
 		this.seat = seat;
 	}

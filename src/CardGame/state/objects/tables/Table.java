@@ -8,7 +8,7 @@ import CardGame.state.objects.enums.CardColor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Table {
+public abstract class Table {
 	//used for the flow of the game, indicates wheter the game has finished or not
 	private boolean finished = false;
 
@@ -28,27 +28,13 @@ public class Table {
 	public void setFinished(boolean finished) {
 		this.finished = finished;
 	}
-
-	//keeps track of the players their slagen
-	private List<Slag>[] slagen;
-	private Slag currSlag;
-	private Slag prevSlag;
-
 	
 	public Table(Deck deck, Player... players){
 		this.deck=deck;
 		this.players = players;
-		for(int i=0;i<players.length;i++){
-			players[i].setTable(this,i);
-		}
-
-		//initrialize the Slagen Array
-		slagen = (ArrayList<Slag>[])new ArrayList[players.length];
-		for(int i= 0;i< slagen.length;i++)
-			slagen[i]= new ArrayList<Slag>();
-		currSlag = new Slag(players.length);
 	}
 	
+	public abstract void letPlayerPlay(int player);
 	//getters and setters
 	public Player getPlayer(int player){
 		return players[player];
@@ -76,50 +62,6 @@ public class Table {
 
 	public Deck getDeck(){
 		return deck;
-	}
-
-	public Slag getCurrSlag(){
-		return currSlag;
-	}
-
-	public Slag getPrevSlag(){
-		return prevSlag;
-	}
-
-
-	//methods to handle the flow of the game
-	public void letPlayerPlay(int player){
-		currSlag.playCard(players[player].letPlay(),player);
-	}
-
-	public void appointSlag(int winner) {
-		slagen[winner].add(currSlag);
-		newSlag();
-	}
-
-	//resets the board for a new round
-	public void reset(){
-		collectCards();
-		this.prevSlag = null;
-	}
-
-	//private methods
-	private void collectCards(){
-		for(List<Slag> a :slagen ){
-			while(!a.isEmpty()){
-				Slag s = a.get(0);
-				for(int i = 0;i<getAmountOfPlayers();i++){
-					deck.addCard(s.getCard((s.getStarter()+i)%getAmountOfPlayers()));
-				}
-				a.remove(0);
-			}
-		}
-		//todo: collect cards still in the players hands
-	}
-
-	private void newSlag(){
-		prevSlag = currSlag;
-		currSlag = new Slag(getAmountOfPlayers());
 	}
 
 }

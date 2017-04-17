@@ -85,8 +85,4 @@ public class HJPlayer extends HumanPlayer implements HJPlayerInterface {
         }
     }
 
-    @Override
-    public void giveScreen(Screen s){
-        new HJController(s, this);
-    }
 }

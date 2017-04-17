@@ -116,10 +116,6 @@ public class KHumanPlayer extends HumanPlayer implements KPlayer{
 		return ((KTable)table).getBidding();
 	}
 
-	@Override
-	public void giveScreen(Screen s){
-		new KController(s, this);
-	}
 
 	@Override
 	public boolean hasCard(int color, int number) {

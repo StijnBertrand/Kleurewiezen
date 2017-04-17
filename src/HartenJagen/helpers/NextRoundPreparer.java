@@ -8,7 +8,7 @@ import HartenJagen.objects.HJTable;
  */
 public class NextRoundPreparer {
 
-    public void prepareNextRound(Table table) {
+    public void prepareNextRound(HJTable table) {
         table.setDealer((table.getDealer()+1)%table.getAmountOfPlayers());
         table.reset();
         ((HJTable)table).setBroken(false);

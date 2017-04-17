@@ -7,8 +7,9 @@ import CardGame.state.objects.Hand;
 import CardGame.state.objects.Player;
 import CardGame.state.objects.Slag;
 import CardGame.state.objects.tables.Table;
+import CardGame.state.objects.tables.TroefTable;
 
-public class KTable extends Table {
+public class KTable extends TroefTable {
 	
 	private Slag discarted = new Slag(4);
 	private boolean bidding = false;

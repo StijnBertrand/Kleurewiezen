@@ -3,13 +3,14 @@ package CardGame.helpers.slagwinnerdeciders;
 import CardGame.state.objects.Card;
 import CardGame.state.objects.Slag;
 import CardGame.state.objects.enums.CardNumber;
+import CardGame.state.objects.tables.SlagTable;
 import CardGame.state.objects.tables.Table;
 
 /**
  * Created by stijn on 4/16/17.
  */
-public class HighestCardSameColour implements SlagWinnerDecider<Table> {
-    public int decideWinner(Table table) {
+public class HighestCardSameColour implements SlagWinnerDecider<SlagTable> {
+    public int decideWinner(SlagTable table) {
         Slag s = table.getCurrSlag();
         int winner = s.getStarter();
         Card highest = s.getCard(s.getStarter());
