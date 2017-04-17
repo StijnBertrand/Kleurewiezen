@@ -1,15 +1,18 @@
-package CardGame.state.objects;
+package CardGame.state.objects.tables;
 
 import CardGame.state.factories.DeckFactory;
+import CardGame.state.objects.Deck;
+import CardGame.state.objects.Player;
+import CardGame.state.objects.Slag;
 import CardGame.state.objects.enums.CardColor;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Table {
 	//used for the flow of the game, indicates wheter the game has finished or not
 	private boolean finished = false;
 
-	private DeckFactory df = DeckFactory.getInstance();
-	private Deck deck = df.getDeck52();
+	private Deck deck;
 	//private Deck deck = df.troelTest();
 	protected Player[] players;
 	//keeps track of who the dealer is
@@ -27,32 +30,28 @@ public class Table {
 	}
 
 	//keeps track of the players their slagen
-	private ArrayList<Slag>[] slagen;
+	private List<Slag>[] slagen;
 	private Slag currSlag;
 	private Slag prevSlag;
-	//in some games there is a troef, can be ignored if this stays CardColor.NONE
-	private CardColor troef = CardColor.NONE;
+
 	
-	public Table(){
-		players = new Player[4];
-		
-		slagen = (ArrayList<Slag>[])new ArrayList[4];
-		slagen[0] = new ArrayList<Slag>();
-		slagen[1] = new ArrayList<Slag>();
-		slagen[2] = new ArrayList<Slag>();
-		slagen[3] = new ArrayList<Slag>();
-		
+	public Table(Deck deck, Player... players){
+		this.deck=deck;
+		this.players = players;
+		for(int i=0;i<players.length;i++){
+			players[i].setTable(this,i);
+		}
+
+		//initrialize the Slagen Array
+		slagen = (ArrayList<Slag>[])new ArrayList[players.length];
+		for(int i= 0;i< slagen.length;i++)
+			slagen[i]= new ArrayList<Slag>();
 		currSlag = new Slag(players.length);
 	}
 	
 	//getters and setters
 	public Player getPlayer(int player){
 		return players[player];
-	}
-
-	public void setPlayer(Player player, int place) {
-		players[place] = player;
-		player.setTable(this, place);
 	}
 
 	public int getDealer(){
@@ -87,13 +86,6 @@ public class Table {
 		return prevSlag;
 	}
 
-	public CardColor getTroef() {
-		return troef;
-	}
-
-	public void setTroef(CardColor troef) {
-		this.troef = troef;
-	}
 
 	//methods to handle the flow of the game
 	public void letPlayerPlay(int player){
@@ -109,13 +101,11 @@ public class Table {
 	public void reset(){
 		collectCards();
 		this.prevSlag = null;
-		this.troef = CardColor.NONE;
-
 	}
 
 	//private methods
 	private void collectCards(){
-		for(ArrayList<Slag> a :slagen ){
+		for(List<Slag> a :slagen ){
 			while(!a.isEmpty()){
 				Slag s = a.get(0);
 				for(int i = 0;i<getAmountOfPlayers();i++){

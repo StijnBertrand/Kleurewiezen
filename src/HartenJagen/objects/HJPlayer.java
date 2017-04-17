@@ -40,6 +40,7 @@ public class HJPlayer extends HumanPlayer implements HJPlayerInterface {
                 for(int i = 0;i< amount;i++){
                     cards[i] = hand.play(getSelected().get(i));
                 }
+                emptySelected();
                 return cards;
             }
         } catch (InterruptedException e) {

@@ -1,7 +1,9 @@
 package HartenJagen.objects;
 
+import CardGame.state.factories.DeckFactory;
+import CardGame.state.objects.Player;
 import CardGame.state.objects.enums.CardColor;
-import CardGame.state.objects.Table;
+import CardGame.state.objects.tables.Table;
 
 /**
  * Created by stijn on 2/19/17.
@@ -11,6 +13,10 @@ public class HJTable extends Table {
     private boolean broken = false;
     //0 to the left,1 to the right,2 to the front and 3 to yourself
     private int passCardsTo =0;
+
+    public HJTable(Player... players){
+        super(DeckFactory.getInstance().getDeck52(), players);
+    }
 
     public int getPassCardsTo() {
         return passCardsTo;
@@ -32,7 +38,7 @@ public class HJTable extends Table {
     @Override
     public void letPlayerPlay(int player){
         super.letPlayerPlay(player);
-        if(getCurrSlag().getCard(player).getColour() == CardColor.HEARTS){
+        if(!broken && getCurrSlag().getCard(player).getColour() == CardColor.HEARTS){
             setBroken(true);
         }
     }

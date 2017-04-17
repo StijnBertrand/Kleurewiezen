@@ -1,33 +1,27 @@
 package CardGame.flow;
 
-import CardGame.flow.core.CompositeModule;
-import CardGame.flow.core.Module;
-import CardGame.state.objects.Table;
+import CardGame.state.objects.tables.Table;
 
 /**
  * Created by stijn on 2/20/17.
  */
-public class Game {
+public abstract class Game <T extends Table> {
 
-    private Table table;
-    private CompositeModule module;
+    protected T table;
 
-    public Game(Table table){
+    public Game(T table){
         this.table = table;
-        this.module = new CompositeModule();
     }
 
-    public void start() {
+    public void start(){
         while(!table.isFinished()){
-            module.execute(this.table);
+            playRound();
         }
     }
 
-    public void addModule(Module module){
-        this.module.addModule(module);
-    }
+    protected abstract void playRound();
 
-    public Table getTable(){
+    public T getTable(){
         return table;
     }
 

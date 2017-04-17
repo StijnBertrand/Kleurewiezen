@@ -1,21 +1,18 @@
-package HartenJagen.modules;
+package HartenJagen.helpers;
 
 import CardGame.state.objects.Card;
-import CardGame.state.objects.Table;
-import CardGame.flow.core.Module;
+import CardGame.state.objects.tables.Table;
 import HartenJagen.objects.HJPlayerInterface;
 import HartenJagen.objects.HJTable;
 
 /**
  * Created by stijn on 2/19/17.
  */
-public class PassOnCards extends Module {
+public class CardPasser {
 
-
-    @Override
-    public void execute(Table table) {
+    public void passOnCards(Table table) {
         int passOnTo = ((HJTable)table).getPassCardsTo();
-        if(passOnTo == 3)return;
+        if(passOnTo == 3)return;//no passing on cards
 
         Card[][] cards= new Card[4][3];
 

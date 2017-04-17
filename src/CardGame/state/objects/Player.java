@@ -2,6 +2,7 @@ package CardGame.state.objects;
 
 import CardGame.state.objects.enums.CardColor;
 import CardGame.state.objects.enums.CardNumber;
+import CardGame.state.objects.tables.Table;
 
 import java.util.ArrayList;
 
@@ -104,5 +105,8 @@ public abstract class Player {
 		return false;
 	}
 
+	public void emptySelected(){
+		selected = new ArrayList<>();
+	}
 
 }

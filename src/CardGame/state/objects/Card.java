@@ -37,7 +37,7 @@ public class Card {
 			case JACK: return  "Jack" + str;
 			case QUEEN: return  "Queen" + str;
 			case KING: return "King" + str;
-		default: return (number.getValue()+2) + str;
+		default: return (number.getValue()+1) + str;
 		}
 	}
 }

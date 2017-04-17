@@ -16,11 +16,7 @@ public class Game {
 	int[] game;
 	
 	public Game(Player p1, Player p2, Player p3, Player p4 ){
-		table = new KTable();
-		table.setPlayer(p1,0);
-		table.setPlayer(p2,1);
-		table.setPlayer(p3,2);
-		table.setPlayer(p4,3);
+		table = new KTable(p1,p2,p3,p4);
 	}
 	
 	public void start(){

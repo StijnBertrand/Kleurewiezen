@@ -2,9 +2,11 @@ package KleurenWiezenOld;
 
 import java.util.ArrayList;
 
+import CardGame.state.factories.DeckFactory;
 import CardGame.state.objects.Hand;
+import CardGame.state.objects.Player;
 import CardGame.state.objects.Slag;
-import CardGame.state.objects.Table;
+import CardGame.state.objects.tables.Table;
 
 public class KTable extends Table {
 	
@@ -13,8 +15,8 @@ public class KTable extends Table {
 	private BedSystem beds;
 	private boolean[] visibility;
 	
-	public KTable(){ 
-		super();
+	public KTable(Player p1, Player p2, Player p3, Player p4 ){
+		super(DeckFactory.getInstance().getDeck52(),p1,p2,p3,p4);
 		beds = new BedSystem();
 		visibility = new boolean[4];
 	}
