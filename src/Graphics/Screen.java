@@ -11,9 +11,9 @@ import javax.swing.JFrame;
 public class Screen extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
-	private int width = 300;
-	private int height = 169;
-	private int scale = 3;
+	private static int width = 300;
+	private static int height = 169;
+	private static int scale = 3;
 	
 	private JFrame frame;
 	private boolean running = false; 
@@ -22,17 +22,22 @@ public class Screen extends Canvas implements Runnable {
 	
 	//constructor
 	public Screen() {
+		this(width, height, scale,false);
+	}
+
+	public Screen(int width, int height, int scale, boolean resizeable) {
 		Dimension d = new Dimension (width *scale, height*scale);
 		setPreferredSize(d);
-		
+
 		frame = new JFrame();
-		frame.setResizable(false);
+		frame.setResizable(resizeable);
 		frame.add(this);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
+
 	public synchronized void setController(Controller c){
 		this.c = c;
 	}
